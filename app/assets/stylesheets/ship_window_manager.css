@@ -1,13 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap");
+
 :root {
-  --bg: #f5f7fa;
+  --bg: #eeeeee;
   --panel: #ffffff;
-  --ink: #17202a;
-  --muted: #657386;
-  --line: #d9e0e8;
-  --accent: #116149;
-  --accent-dark: #0a4735;
+  --ink: #2f2f2f;
+  --muted: #666666;
+  --line: #d4d4d4;
+  --accent: #5f963c;
+  --accent-dark: #3f7227;
+  --blue: #2e6fa6;
+  --blue-dark: #245b86;
+  --charcoal: #2e2f31;
   --danger: #b42318;
-  --focus: #2f6fed;
+  --focus: #2e6fa6;
 }
 
 * {
@@ -18,7 +23,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 
 button,
@@ -45,6 +50,7 @@ select {
   margin: 0 0 6px;
   font-size: 28px;
   letter-spacing: 0;
+  color: var(--accent);
 }
 
 .swm-header p {
@@ -62,8 +68,9 @@ select {
 
 .period-pill span {
   display: block;
-  color: var(--muted);
+  color: var(--accent-dark);
   font-size: 12px;
+  font-weight: 700;
   margin-bottom: 4px;
   text-transform: uppercase;
 }
@@ -135,6 +142,7 @@ h3 {
 
 h2 {
   font-size: 18px;
+  color: var(--charcoal);
 }
 
 h3 {
@@ -171,6 +179,7 @@ h3 {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  color: var(--charcoal);
   font-weight: 700;
 }
 
@@ -212,8 +221,15 @@ h3 {
 
 .add-button {
   width: 100%;
-  color: var(--accent-dark);
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #ffffff;
   font-weight: 700;
+}
+
+.add-button:hover {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
 }
 
 .danger-button {
@@ -279,10 +295,10 @@ td {
 th {
   position: sticky;
   top: 0;
-  background: #eef3f7;
+  background: #f4f4f4;
   font-size: 12px;
   text-transform: uppercase;
-  color: #415064;
+  color: var(--charcoal);
   z-index: 1;
 }
 
@@ -361,7 +377,7 @@ tr:last-child td {
 }
 
 .monthly-grid-table th.sticky-col {
-  background: #eef3f7;
+  background: #f4f4f4;
   z-index: 4;
 }
 
@@ -387,21 +403,21 @@ tr:last-child td {
 
 .availability-row td,
 .availability-row .sticky-col {
-  background: #fff3bf;
-  color: #4a3a00;
+  background: #fff2a8;
+  color: #4a3d00;
   font-size: 12px;
   font-weight: 700;
 }
 
 .availability-row .has-window-segment {
-  background: #ffe58f;
+  background: #ffe684;
   text-align: center;
   white-space: nowrap;
 }
 
 .monthly-item-row .available-cell {
-  background: #dff4df;
-  color: #1f6b3a;
+  background: #dcefd2;
+  color: var(--accent-dark);
   text-align: center;
   font-size: 12px;
   font-weight: 700;
@@ -411,7 +427,7 @@ tr:last-child td {
   display: inline-block;
   padding: 3px 7px;
   border-radius: 999px;
-  background: #c7ebcc;
+  background: #cce6be;
 }
 
 @media (max-width: 920px) {
