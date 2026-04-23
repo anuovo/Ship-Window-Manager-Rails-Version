@@ -1,0 +1,123 @@
+<% item_payload = @program.items.order(:class_name, :item_code).map { |item| { id: item.id, class_name: item.class_name, item_code: item.item_code, description: item.description } } %>
+<% range_payload = @ranges.each_with_index.map { |range, index| { id: range.id, start_date: range.start_date.to_s, end_date: range.end_date.to_s, item_ids: range.item_ids, position: index + 1 } } %>
+<% short_date = ->(value) { Date.iso8601(value.to_s).strftime("%m/%d/%y") rescue value.to_s } %>
+
+<main class="swm-shell" data-controller="ship-window-manager">
+  <header class="swm-header">
+    <div>
+      <h1>Ship Window Manager</h1>
+      <p>Define ship ranges and assign items. Monthly availability will be generated automatically.</p>
+    </div>
+    <div class="period-pill">
+      <span>Program Ship Period</span>
+      <strong><%= @program.ship_start_date.strftime("%m/%d/%Y") %> - <%= @program.ship_end_date.strftime("%m/%d/%Y") %></strong>
+    </div>
+  </header>
+
+  <% if flash[:notice].present? %>
+    <div class="flash flash-notice"><%= flash[:notice] %></div>
+  <% end %>
+  <% if flash[:alert].present? %>
+    <div class="flash flash-alert"><%= flash[:alert] %></div>
+  <% end %>
+
+  <nav class="swm-tabs" aria-label="Ship Window Manager views">
+    <button type="button" class="swm-tab is-active" data-tab-target="setup-panel">Setup</button>
+    <button type="button" class="swm-tab" data-tab-target="monthly-grid-panel">Monthly Grid</button>
+  </nav>
+
+  <section id="setup-panel" class="tab-panel is-active">
+    <%= form_with url: ship_window_manager_path, method: :patch, local: true, html: { id: "ship-window-form", class: "manager-grid" } do %>
+      <%= hidden_field_tag :ranges_json, range_payload.to_json, id: "ranges-json" %>
+      <script id="program-data" type="application/json">
+        <%= raw({
+          program: {
+            ship_start_date: @program.ship_start_date.to_s,
+            ship_end_date: @program.ship_end_date.to_s
+          },
+          items: item_payload,
+          ranges: range_payload
+        }.to_json) %>
+      </script>
+
+      <section class="range-column">
+        <div class="column-heading">
+          <h2>Ship Window Ranges</h2>
+          <button type="submit" class="primary-button">Save</button>
+        </div>
+        <div id="range-list" class="range-list"></div>
+        <button type="button" id="add-range" class="add-button">+ Add ship window</button>
+      </section>
+
+      <section class="detail-column" id="detail-panel"></section>
+    <% end %>
+  </section>
+
+  <section id="monthly-grid-panel" class="tab-panel">
+    <div class="monthly-grid-shell">
+      <div class="monthly-grid-heading">
+        <div>
+          <h2>Monthly Grid</h2>
+          <p>Read-only monthly availability derived from ship window ranges.</p>
+        </div>
+      </div>
+
+      <div class="monthly-grid-scroll">
+        <table class="monthly-grid-table">
+          <thead>
+            <tr>
+              <th class="sticky-col item-code-col">Item Code</th>
+              <th class="sticky-col item-col">Item</th>
+              <% @monthly_grid[:months].each do |month| %>
+                <th class="month-col"><%= month[:label] %></th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @monthly_grid[:groups].empty? %>
+              <tr>
+                <td class="sticky-col item-code-col"></td>
+                <td class="sticky-col item-col">No valid ship windows to display.</td>
+                <% @monthly_grid[:months].each do |_| %>
+                  <td></td>
+                <% end %>
+              </tr>
+            <% end %>
+
+            <% @monthly_grid[:groups].each do |group| %>
+              <% group[:windows].each do |window| %>
+                <tr class="availability-row">
+                  <td class="sticky-col item-code-col"><%= window[:label] %></td>
+                  <td class="sticky-col item-col"><%= short_date.call(window[:start_date]) %> - <%= short_date.call(window[:end_date]) %></td>
+                  <% @monthly_grid[:months].each do |month| %>
+                    <% segment = window[:segments_by_month][month[:key]] %>
+                    <td class="<%= "has-window-segment" if segment.present? %>">
+                      <% if segment.present? %>
+                        <%= short_date.call(segment[:display_start_date]) %> - <%= short_date.call(segment[:display_end_date]) %>
+                      <% end %>
+                    </td>
+                  <% end %>
+                </tr>
+              <% end %>
+
+              <% group[:items].each do |item| %>
+                <tr class="monthly-item-row">
+                  <td class="sticky-col item-code-col"><%= item[:item_code] %></td>
+                  <td class="sticky-col item-col"><%= item[:description] %></td>
+                  <% @monthly_grid[:months].each do |month| %>
+                    <% item_segments = item[:segments_by_month][month[:key]] || [] %>
+                    <td class="<%= "available-cell" if item_segments.any? %>">
+                      <% if item_segments.any? %>
+                        <span class="available-mark">Available</span>
+                      <% end %>
+                    </td>
+                  <% end %>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>

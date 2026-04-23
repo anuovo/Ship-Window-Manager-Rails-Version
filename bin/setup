@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+bundle config set --local without production
+bundle install
+bin/rails db:setup

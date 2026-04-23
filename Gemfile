@@ -1,0 +1,13 @@
+source "https://rubygems.org"
+
+ruby "2.6.10"
+
+gem "rails", "~> 6.1.7"
+gem "puma", "~> 5.6"
+gem "sprockets-rails", "~> 3.4"
+gem "sqlite3", "1.4.4", group: [:development, :test]
+gem "pg", "~> 1.4", group: :production
+
+group :development do
+  gem "web-console", ">= 4.1.0"
+end
