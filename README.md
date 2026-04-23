@@ -4,7 +4,7 @@ A Ruby on Rails prototype for defining program ship window date ranges and assig
 
 ## Local Setup
 
-This app targets Ruby 2.6.10 with Rails 6.1.x for compatibility with the local machine.
+This app targets Ruby 3.1.4 with Rails 6.1.x for deployment compatibility.
 
 ```bash
 bundle config set --local without production
