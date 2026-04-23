@@ -12,8 +12,13 @@ test:
   database: db/test.sqlite3
 
 production:
+  <% if ENV["DATABASE_URL"].present? %>
   adapter: postgresql
   encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   url: <%= ENV["DATABASE_URL"] %>
-
+  <% else %>
+  adapter: sqlite3
+  database: storage/production.sqlite3
+  timeout: 5000
+  <% end %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>

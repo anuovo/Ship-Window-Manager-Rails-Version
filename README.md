@@ -15,7 +15,7 @@ bin/rails server
 
 Open `http://localhost:3000`.
 
-The production `pg` gem remains in the bundle for deployment. The local Bundler config above skips production gems so SQLite setup does not require PostgreSQL client headers.
+The production `pg` gem remains in the bundle for Postgres deployment. The local Bundler config above skips production gems so SQLite setup does not require PostgreSQL client headers.
 
 The seed data creates a sample program with a ship period of `10/26/2025 - 10/31/2026`, seven ApplePear items, and a default Ship Window 1 covering the full program period with all items selected.
 
@@ -33,26 +33,24 @@ Production is PostgreSQL-ready via `DATABASE_URL`. The simplest hosted path is R
 
 ### Render
 
-1. Push this app to GitHub.
-2. Create a new Render Web Service from the repo.
-3. Set the runtime to Ruby.
-4. Add a Render PostgreSQL database and copy its internal database URL to `DATABASE_URL`.
-5. Use these commands:
+For a free demo service without a database, omit `DATABASE_URL`. Production will use SQLite at `storage/production.sqlite3`. This is fine for stakeholder testing, but data is not durable like managed PostgreSQL.
+
+Use these commands for a manual Render Web Service:
 
 ```bash
-bundle install
-bundle exec rails db:migrate db:seed
+bundle config set without development test && bundle install && bundle exec rails db:migrate db:seed && bundle exec rails assets:precompile
 bundle exec puma -C config/puma.rb
 ```
 
-6. Set environment variables:
+Set environment variables:
 
 ```bash
 RAILS_ENV=production
 RAILS_SERVE_STATIC_FILES=true
 SECRET_KEY_BASE=<generated secret>
-DATABASE_URL=<render postgres internal url>
 ```
+
+If using managed PostgreSQL, also add `DATABASE_URL=<render postgres internal url>`.
 
 Generate `SECRET_KEY_BASE` locally with:
 
