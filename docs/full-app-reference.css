@@ -1,0 +1,424 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap");
+
+:root {
+  --bg: #eeeeee;
+  --panel: #ffffff;
+  --ink: #2f2f2f;
+  --muted: #666666;
+  --line: #d4d4d4;
+  --accent: #5f963c;
+  --accent-dark: #3f7227;
+  --blue: #2e6fa6;
+  --blue-dark: #245b86;
+  --charcoal: #2e2f31;
+  --danger: #b42318;
+  --focus: #2e6fa6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.swm-shell {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 28px;
+}
+
+.swm-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-end;
+  margin-bottom: 22px;
+}
+
+.swm-header h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+  letter-spacing: 0;
+  color: var(--accent);
+}
+
+.swm-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.period-pill {
+  min-width: 290px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+}
+
+.period-pill span {
+  display: block;
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.reference-notes,
+.monthly-grid-shell,
+.panel-block {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.reference-notes {
+  margin: 0 0 16px;
+  padding: 18px;
+}
+
+.reference-notes h2,
+.panel-title,
+h3 {
+  margin: 0 0 10px;
+  color: var(--charcoal);
+}
+
+.reference-notes ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.reference-notes li {
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.swm-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.swm-tab {
+  min-height: 40px;
+  padding: 9px 20px;
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  background: #eef3f7;
+  color: var(--muted);
+  cursor: default;
+  font-weight: 700;
+}
+
+.swm-tab.is-active {
+  background: var(--panel);
+  color: var(--accent-dark);
+  box-shadow: inset 0 3px 0 var(--accent);
+}
+
+.panel-block {
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.manager-grid {
+  display: grid;
+  grid-template-columns: 390px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.range-column,
+.detail-column {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  min-height: 620px;
+}
+
+.column-heading,
+.detail-heading,
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.count-text,
+.range-card-meta,
+.monthly-grid-heading p {
+  color: var(--muted);
+}
+
+.range-list {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.range-card {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  background: #fbfcfe;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  text-align: left;
+}
+
+.range-card.is-active {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 2px rgba(47, 111, 237, 0.12);
+}
+
+.range-card-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--charcoal);
+  font-weight: 700;
+}
+
+.range-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.primary-button,
+.secondary-button,
+.danger-button,
+.add-button,
+.link-button {
+  min-height: 36px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+}
+
+.primary-button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  padding: 0 18px;
+}
+
+.add-button {
+  width: 100%;
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+  font-weight: 700;
+}
+
+.danger-button {
+  color: var(--danger);
+}
+
+.link-button {
+  color: var(--focus);
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.field label {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.field input,
+.toolbar input,
+.toolbar select {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #fff;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 180px auto auto;
+  margin: 18px 0;
+}
+
+.item-table-wrap {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: auto;
+  max-height: 470px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background: #f4f4f4;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  z-index: 1;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+.checkbox-cell {
+  width: 48px;
+}
+
+.monthly-grid-shell {
+  padding: 18px;
+}
+
+.monthly-grid-heading {
+  margin-bottom: 14px;
+}
+
+.monthly-grid-scroll {
+  max-height: 650px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.monthly-grid-table {
+  min-width: 1700px;
+  table-layout: fixed;
+}
+
+.monthly-grid-table th,
+.monthly-grid-table td {
+  height: 44px;
+  min-width: 158px;
+  border-right: 1px solid var(--line);
+  background-clip: padding-box;
+}
+
+.monthly-grid-table th {
+  z-index: 3;
+}
+
+.monthly-grid-table .sticky-col {
+  position: sticky;
+  background: var(--panel);
+  z-index: 2;
+}
+
+.monthly-grid-table th.sticky-col {
+  background: #f4f4f4;
+  z-index: 4;
+}
+
+.item-code-col {
+  left: 0;
+  width: 140px;
+  min-width: 140px;
+  font-weight: 700;
+}
+
+.item-col {
+  left: 140px;
+  width: 340px;
+  min-width: 340px;
+}
+
+.month-col {
+  width: 158px;
+  min-width: 158px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.availability-row td,
+.availability-row .sticky-col {
+  background: #fff2a8;
+  color: #4a3d00;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.availability-row .has-window-segment {
+  background: #ffe684;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.monthly-item-row .available-cell {
+  background: #dcefd2;
+  color: var(--accent-dark);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.available-mark {
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: #cce6be;
+}
+
+@media (max-width: 920px) {
+  .swm-shell {
+    padding: 18px;
+  }
+
+  .swm-header,
+  .manager-grid {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .period-pill {
+    min-width: 0;
+  }
+
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .swm-tabs {
+    overflow-x: auto;
+  }
+}

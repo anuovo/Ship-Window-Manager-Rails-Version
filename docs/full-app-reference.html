@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ship Window Manager Full App Reference</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./full-app-reference.css">
+  </head>
+  <body>
+    <main class="swm-shell">
+      <header class="swm-header">
+        <div>
+          <h1>Ship Window Manager</h1>
+          <p>Define ship ranges and assign items. Monthly availability will be generated automatically.</p>
+        </div>
+        <div class="period-pill">
+          <span>Program Ship Period</span>
+          <strong>10/26/2025 - 10/31/2026</strong>
+        </div>
+      </header>
+
+      <section class="reference-notes">
+        <h2>Developer Notes</h2>
+        <ul>
+          <li>This is a static HTML/CSS handoff for the full app, not the Rails implementation.</li>
+          <li>The Setup section represents editable ship window range assignment UI.</li>
+          <li>The Monthly Grid section represents the derived read-only monthly view.</li>
+          <li>Replace sample cards, rows, and form values with data from the existing database.</li>
+          <li>Use the Rails service logic as the source for month slicing and grouping rules.</li>
+        </ul>
+      </section>
+
+      <nav class="swm-tabs" aria-label="Ship Window Manager views">
+        <span class="swm-tab is-active">Setup</span>
+        <span class="swm-tab">Monthly Grid</span>
+      </nav>
+
+      <section class="panel-block">
+        <h2 class="panel-title">Setup</h2>
+        <div class="manager-grid">
+          <section class="range-column">
+            <div class="column-heading">
+              <h3>Ship Window Ranges</h3>
+              <button type="button" class="primary-button">Save</button>
+            </div>
+
+            <div class="range-list">
+              <article class="range-card is-active">
+                <div class="range-card-main">
+                  <div class="range-card-title">
+                    <span>Ship Window 1</span>
+                    <span>7 items</span>
+                  </div>
+                  <div class="range-card-meta">10/26/2025 - 12/27/2025</div>
+                  <div class="range-card-meta">Applies to: 7 items</div>
+                </div>
+                <div class="range-actions">
+                  <button type="button" class="link-button">Edit items</button>
+                  <button type="button" class="secondary-button">Duplicate</button>
+                  <button type="button" class="danger-button">Delete</button>
+                </div>
+              </article>
+
+              <article class="range-card">
+                <div class="range-card-main">
+                  <div class="range-card-title">
+                    <span>Ship Window 2</span>
+                    <span>4 items</span>
+                  </div>
+                  <div class="range-card-meta">12/28/2025 - 03/28/2026</div>
+                  <div class="range-card-meta">Applies to: 4 items</div>
+                </div>
+                <div class="range-actions">
+                  <button type="button" class="link-button">Edit items</button>
+                  <button type="button" class="secondary-button">Duplicate</button>
+                  <button type="button" class="danger-button">Delete</button>
+                </div>
+              </article>
+
+              <article class="range-card">
+                <div class="range-card-main">
+                  <div class="range-card-title">
+                    <span>Ship Window 3</span>
+                    <span>3 items</span>
+                  </div>
+                  <div class="range-card-meta">03/29/2026 - 06/27/2026</div>
+                  <div class="range-card-meta">Applies to: 3 items</div>
+                </div>
+                <div class="range-actions">
+                  <button type="button" class="link-button">Edit items</button>
+                  <button type="button" class="secondary-button">Duplicate</button>
+                  <button type="button" class="danger-button">Delete</button>
+                </div>
+              </article>
+            </div>
+
+            <button type="button" class="add-button">+ Add ship window</button>
+          </section>
+
+          <section class="detail-column">
+            <div class="detail-heading">
+              <h3>Ship Window 1</h3>
+              <span class="count-text"><strong>7</strong> assigned items</span>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label>Load Start</label>
+                <input type="text" value="2025-10-26">
+              </div>
+              <div class="field">
+                <label>Load End</label>
+                <input type="text" value="2025-12-27">
+              </div>
+            </div>
+
+            <div class="toolbar">
+              <input type="search" value="" placeholder="Search items">
+              <select>
+                <option>All classes</option>
+                <option selected>ApplePear</option>
+              </select>
+              <button type="button" class="secondary-button">Select all visible</button>
+              <button type="button" class="secondary-button">Clear selection</button>
+            </div>
+
+            <div class="item-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="checkbox-cell"></th>
+                    <th>Class</th>
+                    <th>Item Code</th>
+                    <th>Item</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="checkbox-cell"><input type="checkbox" checked></td>
+                    <td>ApplePear</td>
+                    <td>41021</td>
+                    <td>Apples, Red Del, WA Xcy, 100ct</td>
+                  </tr>
+                  <tr>
+                    <td class="checkbox-cell"><input type="checkbox" checked></td>
+                    <td>ApplePear</td>
+                    <td>41022</td>
+                    <td>Apples, Red Del, WA Xcy, 113ct</td>
+                  </tr>
+                  <tr>
+                    <td class="checkbox-cell"><input type="checkbox" checked></td>
+                    <td>ApplePear</td>
+                    <td>41023</td>
+                    <td>Apple, Red Del, WA Xcy, 125ct</td>
+                  </tr>
+                  <tr>
+                    <td class="checkbox-cell"><input type="checkbox" checked></td>
+                    <td>ApplePear</td>
+                    <td>41024</td>
+                    <td>Apples, Red Del, WA Xcy, 138ct</td>
+                  </tr>
+                  <tr>
+                    <td class="checkbox-cell"><input type="checkbox" checked></td>
+                    <td>ApplePear</td>
+                    <td>41549</td>
+                    <td>Apples, Red Del, US Xcy, 163ct</td>
+                  </tr>
+                  <tr>
+                    <td class="checkbox-cell"><input type="checkbox" checked></td>
+                    <td>ApplePear</td>
+                    <td>41101</td>
+                    <td>Apples, Gold Del, US Xcy, 88ct</td>
+                  </tr>
+                  <tr>
+                    <td class="checkbox-cell"><input type="checkbox" checked></td>
+                    <td>ApplePear</td>
+                    <td>41102</td>
+                    <td>Apples, Gold Del, US Xcy, 100ct</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel-block">
+        <h2 class="panel-title">Monthly Grid</h2>
+        <div class="monthly-grid-shell">
+          <div class="monthly-grid-heading">
+            <div>
+              <h3>Monthly Grid</h3>
+              <p>Read-only monthly availability derived from ship window ranges.</p>
+            </div>
+          </div>
+
+          <div class="monthly-grid-scroll">
+            <table class="monthly-grid-table">
+              <thead>
+                <tr>
+                  <th class="sticky-col item-code-col">Item Code</th>
+                  <th class="sticky-col item-col">Item</th>
+                  <th class="month-col">Oct 25</th>
+                  <th class="month-col">Nov 25</th>
+                  <th class="month-col">Dec 25</th>
+                  <th class="month-col">Jan 26</th>
+                  <th class="month-col">Feb 26</th>
+                  <th class="month-col">Mar 26</th>
+                  <th class="month-col">Apr 26</th>
+                  <th class="month-col">May 26</th>
+                  <th class="month-col">Jun 26</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="availability-row">
+                  <td class="sticky-col item-code-col">Ship Window 1</td>
+                  <td class="sticky-col item-col">10/26/25 - 12/27/25</td>
+                  <td class="has-window-segment">10/26/25 - 10/31/25</td>
+                  <td class="has-window-segment">11/01/25 - 11/30/25</td>
+                  <td class="has-window-segment">12/01/25 - 12/27/25</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr class="availability-row">
+                  <td class="sticky-col item-code-col">Ship Window 2</td>
+                  <td class="sticky-col item-col">12/28/25 - 03/28/26</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="has-window-segment">12/28/25 - 01/31/26</td>
+                  <td class="has-window-segment">02/01/26 - 02/28/26</td>
+                  <td class="has-window-segment">03/01/26 - 03/28/26</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr class="availability-row">
+                  <td class="sticky-col item-code-col">Ship Window 3</td>
+                  <td class="sticky-col item-col">03/29/26 - 06/27/26</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="has-window-segment">03/29/26 - 04/30/26</td>
+                  <td class="has-window-segment">05/01/26 - 05/31/26</td>
+                  <td class="has-window-segment">06/01/26 - 06/27/26</td>
+                </tr>
+
+                <tr class="monthly-item-row">
+                  <td class="sticky-col item-code-col">41021</td>
+                  <td class="sticky-col item-col">Apples, Red Del, WA Xcy, 100ct</td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr class="monthly-item-row">
+                  <td class="sticky-col item-code-col">41022</td>
+                  <td class="sticky-col item-col">Apples, Red Del, WA Xcy, 113ct</td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                </tr>
+                <tr class="monthly-item-row">
+                  <td class="sticky-col item-code-col">41023</td>
+                  <td class="sticky-col item-col">Apple, Red Del, WA Xcy, 125ct</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                  <td class="available-cell"><span class="available-mark">Available</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
