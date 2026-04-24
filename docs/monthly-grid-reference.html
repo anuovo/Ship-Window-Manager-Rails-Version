@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monthly Grid Reference</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./monthly-grid-reference.css">
+  </head>
+  <body>
+    <main class="monthly-grid-reference">
+      <header class="reference-header">
+        <div>
+          <h1>Monthly Grid Reference</h1>
+          <p>Static HTML/CSS handoff for developers to bind to an existing database.</p>
+        </div>
+      </header>
+
+      <section class="reference-notes">
+        <h2>Developer Notes</h2>
+        <ul>
+          <li>Yellow rows are derived ship window availability rows.</li>
+          <li>Green item cells mean that specific item is assigned to that ship window for that month.</li>
+          <li>Blank cells mean no availability for that item/month combination.</li>
+          <li>Sticky first two columns and sticky month header row are included in CSS.</li>
+          <li>Replace the sample rows below with rows generated from your existing database.</li>
+        </ul>
+      </section>
+
+      <section class="monthly-grid-shell">
+        <div class="monthly-grid-heading">
+          <div>
+            <h2>Monthly Grid</h2>
+            <p>Read-only monthly availability derived from ship window ranges.</p>
+          </div>
+        </div>
+
+        <div class="monthly-grid-scroll">
+          <table class="monthly-grid-table">
+            <thead>
+              <tr>
+                <th class="sticky-col item-code-col">Item Code</th>
+                <th class="sticky-col item-col">Item</th>
+                <th class="month-col">Oct 25</th>
+                <th class="month-col">Nov 25</th>
+                <th class="month-col">Dec 25</th>
+                <th class="month-col">Jan 26</th>
+                <th class="month-col">Feb 26</th>
+                <th class="month-col">Mar 26</th>
+                <th class="month-col">Apr 26</th>
+                <th class="month-col">May 26</th>
+                <th class="month-col">Jun 26</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Group 1 -->
+              <tr class="availability-row">
+                <td class="sticky-col item-code-col">Ship Window 1</td>
+                <td class="sticky-col item-col">10/26/25 - 12/27/25</td>
+                <td class="has-window-segment">10/26/25 - 10/31/25</td>
+                <td class="has-window-segment">11/01/25 - 11/30/25</td>
+                <td class="has-window-segment">12/01/25 - 12/27/25</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="availability-row">
+                <td class="sticky-col item-code-col">Ship Window 2</td>
+                <td class="sticky-col item-col">12/28/25 - 03/28/26</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="has-window-segment">12/28/25 - 01/31/26</td>
+                <td class="has-window-segment">02/01/26 - 02/28/26</td>
+                <td class="has-window-segment">03/01/26 - 03/28/26</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="availability-row">
+                <td class="sticky-col item-code-col">Ship Window 3</td>
+                <td class="sticky-col item-col">03/29/26 - 06/27/26</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="has-window-segment">03/29/26 - 04/30/26</td>
+                <td class="has-window-segment">05/01/26 - 05/31/26</td>
+                <td class="has-window-segment">06/01/26 - 06/27/26</td>
+              </tr>
+
+              <tr class="monthly-item-row">
+                <td class="sticky-col item-code-col">41021</td>
+                <td class="sticky-col item-col">Apples, Red Del, WA Xcy, 100ct</td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="monthly-item-row">
+                <td class="sticky-col item-code-col">41022</td>
+                <td class="sticky-col item-col">Apples, Red Del, WA Xcy, 113ct</td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+              </tr>
+              <tr class="monthly-item-row">
+                <td class="sticky-col item-code-col">41023</td>
+                <td class="sticky-col item-col">Apple, Red Del, WA Xcy, 125ct</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+                <td class="available-cell"><span class="available-mark">Available</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,167 @@
+:root {
+  --bg: #eeeeee;
+  --panel: #ffffff;
+  --ink: #2f2f2f;
+  --muted: #666666;
+  --line: #d4d4d4;
+  --accent: #5f963c;
+  --accent-dark: #3f7227;
+  --blue: #2e6fa6;
+  --charcoal: #2e2f31;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+.monthly-grid-reference {
+  width: min(1600px, 100%);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.reference-header h1,
+.monthly-grid-heading h2,
+.reference-notes h2 {
+  margin: 0 0 8px;
+  color: var(--charcoal);
+}
+
+.reference-header p,
+.monthly-grid-heading p,
+.reference-notes li {
+  color: var(--muted);
+}
+
+.reference-notes,
+.monthly-grid-shell {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.reference-notes {
+  margin: 0 0 18px;
+  padding: 18px 20px;
+}
+
+.reference-notes ul {
+  margin: 10px 0 0 18px;
+  padding: 0;
+}
+
+.monthly-grid-shell {
+  padding: 18px;
+}
+
+.monthly-grid-heading {
+  margin-bottom: 14px;
+}
+
+.monthly-grid-scroll {
+  max-height: 650px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.monthly-grid-table {
+  width: 100%;
+  min-width: 1700px;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.monthly-grid-table th,
+.monthly-grid-table td {
+  height: 44px;
+  min-width: 158px;
+  padding: 10px 12px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.monthly-grid-table th {
+  position: sticky;
+  top: 0;
+  background: #f4f4f4;
+  color: var(--charcoal);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 3;
+}
+
+.monthly-grid-table .sticky-col {
+  position: sticky;
+  background: var(--panel);
+  z-index: 2;
+}
+
+.monthly-grid-table th.sticky-col {
+  background: #f4f4f4;
+  z-index: 4;
+}
+
+.item-code-col {
+  left: 0;
+  width: 140px;
+  min-width: 140px;
+  font-weight: 700;
+}
+
+.item-col {
+  left: 140px;
+  width: 340px;
+  min-width: 340px;
+}
+
+.month-col {
+  width: 158px;
+  min-width: 158px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.availability-row td,
+.availability-row .sticky-col {
+  background: #fff2a8;
+  color: #4a3d00;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.availability-row .has-window-segment {
+  background: #ffe684;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.monthly-item-row .available-cell {
+  background: #dcefd2;
+  color: var(--accent-dark);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.available-mark {
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: #cce6be;
+}
+
+@media (max-width: 920px) {
+  .monthly-grid-reference {
+    padding: 16px;
+  }
+}
